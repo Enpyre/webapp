@@ -1,11 +1,13 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
-import Canvas from './Canvas';
+import AppProvider from './hooks';
+import Home from './pages/Home';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <Canvas color={0xffff0b} width={1440} height={720} x={200} y={200} />
-    </div>
+    <AppProvider>
+      <Home />
+    </AppProvider>
   );
 };
 
