@@ -6,17 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
+  <script src="https://pixijs.download/release/pixi.js"></script>
   <script src="https://cdn.jsdelivr.net/pyodide/v0.18.1/full/pyodide.js"></script>
 </head>
 <body>
   <main>
     <div id="app"></div>
+    <textarea id="code"></textarea>
+    <button type="button" onclick="run()">Run</button>
   </main>
   <script type="text/javascript">
     async function main(){
       window.pyodide = pyodide = await loadPyodide({
         indexURL : "https://cdn.jsdelivr.net/pyodide/v0.18.1/full/"
       });
+
+      await window.pyodide.loadPackage("micropip");
+
+      await window.pyodide.runPythonAsync(`
+          import micropip
+          await micropip.install("http://localhost:8080/engine-0.0.1-py3-none-any.whl")
+          from engine import *
+      `);
     }
     main();
   </script>
