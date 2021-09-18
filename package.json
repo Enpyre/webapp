@@ -1,0 +1,15 @@
+{
+  "name": "webapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Pyongine/webapp.git",
+  "author": "Vitor Nere <vitor.nere@hotmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "npx tsc -w"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^4.4.3"
+  }
+}
