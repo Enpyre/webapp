@@ -12,15 +12,16 @@ const run = () => {
 
 let app: any = undefined;
 
-const drawCanvas = (x: number, y: number, color: string) => {
-    const colorHex = color.replace("#", "0x");
-    const colorInt = parseInt(colorHex);
+const colorToInt = (color: string) => {
+    return parseInt(color.replace("#", "0x"));
+}
 
+const drawCanvas = (x: number, y: number, color: string) => {
     app = new _window.PIXI.Application(
       {
         width: x,
         height: y,
-        backgroundColor: colorInt
+        backgroundColor: colorToInt(color)
       }
     );
     const canvasDiv: any = document.getElementById("app");
@@ -28,11 +29,11 @@ const drawCanvas = (x: number, y: number, color: string) => {
     canvasDiv.appendChild(app.view);
 }
 
-const drawCircle = (x: number, y: number, r: number, color: number) => {
+const drawCircle = (x: number, y: number, r: number, color: string) => {
     const graphics = new _window.PIXI.Graphics()
 
     graphics.lineStyle(0);
-    graphics.beginFill(color, 1);
+    graphics.beginFill(colorToInt(color), 1);
     graphics.drawCircle(x, y, r);
     graphics.endFill();
 
