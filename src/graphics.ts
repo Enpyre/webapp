@@ -10,6 +10,9 @@ const drawCanvas = (
   color: string = '#000000',
   update: (delta: number) => void,
 ) => {
+    if (app) {
+        app.destroy(true);
+    }
     app = new _window.PIXI.Application(
       {
         width,
