@@ -25,13 +25,12 @@ const drawCanvas = (
 
 const drawCircle = (x: number, y: number, r: number, color: string) => {
     const graphics = new _window.PIXI.Graphics()
-
     graphics.lineStyle(0);
     graphics.beginFill(colorToInt(color), 1);
     graphics.drawCircle(x, y, r);
     graphics.endFill();
-
     app.stage.addChild(graphics);
+    return graphics;
 }
 
 _window.drawCanvas = drawCanvas;
