@@ -10,8 +10,17 @@ const run = () => {
 
 let app: any = undefined;
 
-const drawCanvas = (x: number, y: number) => {
-    app = new _window.PIXI.Application({ width: x, height: y });
+const drawCanvas = (x: number, y: number, color: string) => {
+    const colorHex = color.replace("#", "0x");
+    const colorInt = parseInt(colorHex);
+
+    app = new _window.PIXI.Application(
+      {
+        width: x,
+        height: y,
+        backgroundColor: colorInt
+      }
+    );
     const canvasDiv: any = document.getElementById("app");
     canvasDiv.innerHTML = '';
     canvasDiv.appendChild(app.view);
