@@ -4,17 +4,23 @@ const colorToInt = (color: string) => {
     return parseInt(color.replace("#", "0x"));
 }
 
-const drawCanvas = (x: number, y: number, color: string) => {
+const drawCanvas = (
+  height: number,
+  width: number,
+  color: string = '#000000',
+  update: (delta: number) => void,
+) => {
     app = new _window.PIXI.Application(
       {
-        width: x,
-        height: y,
+        width,
+        height,
         backgroundColor: colorToInt(color)
       }
     );
     const canvasDiv: any = document.getElementById("app");
     canvasDiv.innerHTML = '';
     canvasDiv.appendChild(app.view);
+    app.ticker.add(update);
 }
 
 const drawCircle = (x: number, y: number, r: number, color: string) => {
