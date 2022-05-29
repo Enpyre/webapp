@@ -24,6 +24,7 @@ const drawCanvas = (
     canvasDiv.innerHTML = '';
     canvasDiv.appendChild(app.view);
     app.ticker.add(update);
+    app.ticker.maxFPS = 60;
 }
 
 const drawCircle = (x: number, y: number, r: number, color: string) => {
